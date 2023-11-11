@@ -1,1 +1,2 @@
-.config/nvim/plugin
+.vscode
+lazy-lock.json
