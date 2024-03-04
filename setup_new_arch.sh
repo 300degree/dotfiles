@@ -18,20 +18,21 @@ install_tools() {
 copy_config() {
     echo -e "\nCopying configs..."
     echo "[*] Copying neofetch"
-    cp -r .config/neofetch/ ~/.config/
+    cp -r .config/neofetch/* ~/.config/
 
     echo "[*] Copying neovim"
-    cp -r ./.config/nvim ~/.config/nvim
+    cp -r ./.config/nvim/* ~/.config/nvim
 
     echo "[*] Copying tmuxconf"
-    cp -r ./.config/tmux/tmux.conf ~/.config/tmux
+    cp -r ./.config/tmux/* ~/.config/tmux
 
     echo "[*] Copying fishconf"
-    cp -r .config/fish/ ~/.config/fish
+    cp -r .config/fish/* ~/.config/fish
 }
 
 install_tools
 copy_config
 
 echo "[*] Changing default shell"
-chsh -s "$(which fish)" | fish
+chsh -s "$(which fish)"
+echo -e "\e[1;92mDONE!\e[0m, Dont forgot to run prefix + I in tmux"
