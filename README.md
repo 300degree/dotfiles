@@ -1,6 +1,6 @@
 # dotfiles
 
-![neovim setup](./image/Screenshot2024-03-01145646.png)
+![neovim setup](./image/300degree.png)
 
 ## Configs
 
