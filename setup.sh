@@ -1,30 +1,28 @@
-#! /usr/bin/bash
+#! /bin/bash
 
-install_tools() {
-    echo -e "\nInstalling tools..."
-    echo "[*] Install oh-my-fish & theme"
-    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-    fish ./script/theme.fish
+echo "Installing oh_my_zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    echo "[*] Install tmp"
-    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-}
+echo "Copying zshrc"
+cp .zshrc ~/.zshrc
 
-copy_config() {
-    echo -e "\nCopying configs..."
-    echo "[*] Copying neovim"
-    cp -r .config/nvim ~/.config/nvim
+echo "Copying tmuxconf"
+cp .tmux.conf ~/.tmux.conf
 
-    echo "[*] Copying tmuxconf"
-    cp -r .config/tmux/tmux.conf ~/.config/tmux/
+if command -v nvim &>/dev/null; then
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  echo "Copying init.vim"
+  cp init.vim ~/.config/nvim/init.vim
 
-    echo "[*] Copying fishconf"
-    cp -r .config/fish/config.fish ~/.config/fish/
-}
+elif command -v vim &>/dev/null; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  echo "Copying .vimrc"
+  cp init.vim ~/.vimrc
 
-install_tools
-copy_config
+else
+  echo "you dont have vim and neovim"
+fi
 
-echo "[*] Changing default shell"
-chsh -s "$(which fish)"
-echo -e "\e[1;92mDONE!\e[0m, Dont forgot to run prefix + I in tmux"
+echo "Done! : Dont forget to run :PlugInstall in vim"

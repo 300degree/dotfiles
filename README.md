@@ -5,9 +5,15 @@
 ## Configs
 
 - Neovim
-- Neofetch
 - Tmux
-- fish & ohmyfish
+- Zsh
+
+## Requirements and tools that I use
+
+- [Vim & Nvim]
+- [Nerd Font]
+- [Tmux]
+- [Exa]
 
 ### 🚀 Installation
 
@@ -17,8 +23,8 @@ Clone the repository.
 git clone https://github.com/300degree/dotfiles.git
 ```
 
-and run setup_new_arch:
+and run set.sh:
 
 ```bash
-sh ./setup_new_arch.sh
+sh ./setup.sh
 ```
