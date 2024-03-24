@@ -99,14 +99,18 @@ export EDITOR=vim
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias t="tmux"
-alias tn="(){tmux new -s $1}"
 alias vi="vim"
 alias ls="exa -l"
 alias ll="exa -la"
 alias cls="clear"
 alias py="python3"
+
+bindkey '^h' backward-char
+bindkey '^j' down-line-or-history
+bindkey '^k' up-line-or-history
+bindkey '^l' forward-char
