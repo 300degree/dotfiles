@@ -7,7 +7,8 @@ Plug 'preservim/nerdtree'
 Plug 'tomasr/molokai'
 
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
-" Plug 'townk/vim-autoclose'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'townk/vim-autoclose'
 
 call plug#end()
 
@@ -39,17 +40,25 @@ inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
-" coc language server
 " add to coc_global_extensions, if you wanna using it.
-" coc-html, coc-css
-" coc-tserver
-" coc-json
-" coc-pyright
-" coc-java
-
-" let g:coc_global_extensions = ['coc-clangd', 'coc-go', 'coc-golines', 'coc-sh']
-let g:coc_global_extensions = ['coc-clangd', 'coc-pyright']
+" \ 'coc-go',
+" \ 'coc-golines',
+" \ 'coc-rust-analyzer',
+" \ 'coc-java',
+" \ 'coc-html',
+" \ 'coc-css',
+" \ 'coc-json',
+" \ 'coc-tserver',
+" \ 'coc-pyright',
+let g:coc_global_extensions =
+    \ [
+    \ 'coc-clangd',
+    \ 'coc-perl',
+    \ 'coc-sh',
+    \ ]
 let g:NERDTreeDirArrowCollapsible="~"
 let g:NERDTreeDirArrowExpandable="+"
 
