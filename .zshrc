@@ -90,9 +90,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-export MPI_DIR=$HOME/.openmpi
-export PATH=$MPI_DIR/bin:$HOME/.openmpi/bin:$PATH
-export LD_LIBRARY_PATH=$MPI_DIR/lib:$HOME/.openmpi/lib:$LD_LIBRARY_PATH
+
+# export MPI_DIR=$HOME/.openmpi
+# export PATH=$MPI_DIR/bin:$HOME/.openmpi/bin:$PATH
+# export LD_LIBRARY_PATH=$MPI_DIR/lib:$HOME/.openmpi/lib:$LD_LIBRARY_PATH
 export EDITOR=vim
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
