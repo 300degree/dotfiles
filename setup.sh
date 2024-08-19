@@ -2,7 +2,8 @@
 
 if ! command -v node &>/dev/null; then
   echo "Installing nodejs"
-  curl -sL install-node.vercel.app/lts | bash
+  mkdir -p $HOME/.nodejs
+  curl -sL install-node.vercel.app/lts | bash -s -- --prefix=$HOME/.nodejs
 fi
 
 echo "Installing oh_my_zsh"
@@ -16,7 +17,7 @@ echo "Copying zshrc"
 cp .zshrc ~/.zshrc
 
 echo "Copying tmuxconf"
-mkdir ~/.config/tmux
+mkdir -p ~/.config/tmux
 cp .tmux.conf ~/.config/tmux/tmux.conf
 
 echo "Copying .vimrc"

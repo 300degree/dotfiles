@@ -94,6 +94,8 @@ source $ZSH/oh-my-zsh.sh
 # export MPI_DIR=$HOME/.openmpi
 # export PATH=$MPI_DIR/bin:$HOME/.openmpi/bin:$PATH
 # export LD_LIBRARY_PATH=$MPI_DIR/lib:$HOME/.openmpi/lib:$LD_LIBRARY_PATH
+export NODEJS_DIR=$HOME/.nodejs
+export PATH=$NODEJS_DIR/bin:$HOME/.nodejs/bin:$PATH
 export EDITOR=vim
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,

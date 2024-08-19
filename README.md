@@ -29,5 +29,5 @@ git clone https://github.com/300degree/dotfiles.git $HOME/dotfiles && cd $HOME/d
 and run setup.sh:
 
 ```bash
-bash ./setup.sh
+./setup.sh
 ```
