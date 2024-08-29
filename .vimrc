@@ -4,15 +4,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'edkolev/tmuxline.vim'
-Plug 'preservim/nerdtree'
 Plug 'tomasr/molokai'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'townk/vim-autoclose'
 
-let g:NERDTreeDirArrowCollapsible="~"
-let g:NERDTreeDirArrowExpandable="+"
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 let g:molokai_original = 1
@@ -56,10 +56,6 @@ set nowrap
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
 inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
-
-nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-c> :NERDTreeClose<CR>
-nnoremap <C-t> :NERDTree<CR>
 
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv

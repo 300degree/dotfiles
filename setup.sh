@@ -6,6 +6,10 @@ if ! command -v node &>/dev/null; then
   curl -sL install-node.vercel.app/lts | bash -s -- --prefix=$HOME/.nodejs
 fi
 
+echo "Installing fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 echo "Installing oh_my_zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
