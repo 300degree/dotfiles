@@ -21,8 +21,7 @@ echo "Copying zshrc"
 cp .zshrc ~/.zshrc
 
 echo "Copying tmuxconf"
-mkdir -p ~/.config/tmux
-cp .tmux.conf ~/.config/tmux/tmux.conf
+cp .tmux.conf ~/.tmux.conf
 
 echo "Copying .vimrc"
 cp .vimrc ~/.vimrc
