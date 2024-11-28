@@ -50,11 +50,11 @@ set hlsearch
 set number
 set nowrap
 
-nnoremap ww :w<CR>
-nnoremap qq :q!<CR>
-nnoremap wq :wq<CR>
+" nnoremap <C-w>w :w<CR>
+" nnoremap <C-q>q :q!<CR>
+" nnoremap <C-w>q :wq<CR>
 
-inoremap jk <ESC>
+" inoremap jk <ESC>
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
 inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "\<C-j>"
 inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"

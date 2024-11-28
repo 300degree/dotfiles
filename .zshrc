@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="half-life" # set by omz
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -89,16 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# export MPI_DIR=$HOME/.openmpi
-# export PATH=$MPI_DIR/bin:$HOME/.openmpi/bin:$PATH
-# export LD_LIBRARY_PATH=$MPI_DIR/lib:$HOME/.openmpi/lib:$LD_LIBRARY_PATH
-export NODEJS_DIR=$HOME/.nodejs
-export PATH=$NODEJS_DIR/bin:$HOME/.nodejs/bin:$PATH
-export EDITOR=vim
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -108,21 +99,3 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias t="tmux"
-alias vi="vim"
-alias ls="exa -l"
-alias ll="exa -la"
-alias cls="clear"
-alias py="python3"
-
-bindkey '^h' backward-char
-bindkey '^j' down-line-or-history
-bindkey '^k' up-line-or-history
-bindkey '^l' forward-char
-
-of() {
-	local file
-	file=$(find ${1:-.} -path '*/\.*' -prune \
-		-o -path -print 2> /dev/null | fzf +m) &&
-	vim "$file"
-}
