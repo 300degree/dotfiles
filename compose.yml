@@ -1,0 +1,9 @@
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: setup-dotfiles
+    ports:
+      - 8000:8000
