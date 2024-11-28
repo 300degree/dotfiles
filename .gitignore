@@ -1,1 +1,5 @@
 .vscode
+.cache
+*.o
+*.out
+*.exe
