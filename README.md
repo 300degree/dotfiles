@@ -31,3 +31,9 @@ and run setup.sh:
 ```bash
 ./setup.sh
 ```
+
+or
+
+```bash
+curl -sL https://raw.githubusercontent.com/300degree/dotfiles/refs/heads/main/setup.sh | bash
+```
