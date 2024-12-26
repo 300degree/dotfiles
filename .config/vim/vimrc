@@ -1,0 +1,66 @@
+call plug#begin()
+
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
+Plug 'tomasr/molokai'
+
+Plug 'junegunn/fzf', { 'dir': '~/.local/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+Plug 'terryma/vim-multiple-cursors'
+Plug 'townk/vim-autoclose'
+
+let g:airline_theme = 'powerlineish'
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+call plug#end()
+filetype plugin on
+
+let g:asyncomplete_auto_completeopt = 1
+
+autocmd FileType c,cpp
+    \ setlocal
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ tabstop=4
+
+colorscheme molokai
+syntax enable
+
+set encoding=utf-8
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set mouse=a
+
+set relativenumber
+set noerrorbells
+set smartindent
+set cursorline
+set lazyredraw
+set noswapfile
+set autoindent
+set showmatch
+set expandtab
+set smartcase
+set nobackup
+set hlsearch
+set number
+set nowrap
+
+nnoremap <C-p> :Files<CR>
+
+vnoremap <S-Tab> <gv
+vnoremap <Tab> >gv
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <TAB> pumvisible() ? asyncomplete#close_popup() : "\<TAB>"
+
