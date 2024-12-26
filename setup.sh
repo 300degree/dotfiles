@@ -14,17 +14,17 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir -p ~/.config/vim
-curl -sfL "$URL/.config/vim/vimrc" -o ~/.config/vimrc
+curl -sfL "$URL/.config/vim/vimrc" -o ~/.config/vim/vimrc
 ln -sf ~/.config/vim/vimrc ~/.vimrc
 success "Install vimrc"
 
 mkdir -p ~/.config/tmux
-curl -sfL "$URL/.config/tmux/tmux.conf" -o ~/.config/tmux.conf
+curl -sfL "$URL/.config/tmux/tmux.conf" -o ~/.config/tmux/tmux.conf
 ln -sf ~/.config/tmux/tmux.conf ~/.tmux.conf
 success "Install tmuxconf"
 
 mkdir -p ~/.config/zsh
-curl -sfL "$URL/.config/zsh/zshrc" -o ~/.config/zshrc
+curl -sfL "$URL/.config/zsh/zshrc" -o ~/.config/zsh/zshrc
 ln -sf ~/.config/zsh/zshrc ~/.zshrc
 success "Install zshrc"
 
