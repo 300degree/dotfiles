@@ -30,4 +30,4 @@ success "Install zshrc"
 
 # mkdir -p ~/.config/git
 
-printf "Done! : Dont forget to run :PlugInstall in VIM and change default SHELL"
+printf "Done! : Dont forget to run :PlugInstall in VIM and change default SHELL\n"
