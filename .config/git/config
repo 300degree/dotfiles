@@ -1,0 +1,23 @@
+[user]
+    email = kitibodee05p@gmail.com
+	name  = 300degree
+[init]
+    defaultBranch = master
+[core]
+    editor       = vim
+	excludesFile = /home/kit/.config/git/ignore
+[diff]
+	tool = vimdiff
+[difftool]
+    tool    = vimdiff
+    prompt  = false
+[alias]
+    df    = difftool
+    cm    = commit -m
+    ci    = commit
+    co    = checkout
+    st    = status
+    br    = branch
+    re    = reset
+    last  = log -1 HEAD
+    recap = log -5 HEAD
