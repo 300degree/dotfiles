@@ -1,61 +1,60 @@
 call plug#begin()
 
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
-Plug 'Yggdroot/indentLine'
-Plug 'tomasr/molokai'
-
 Plug 'junegunn/fzf', { 'dir': '~/.local/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-
-Plug 'terryma/vim-multiple-cursors'
-Plug 'townk/vim-autoclose'
-
-let g:airline_theme = 'powerlineish'
-let g:molokai_original = 1
-let g:rehash256 = 1
+Plug 'preservim/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
+
+set t_Co=256
+set termguicolors
+set background=dark
+colorscheme gruvbox
+syntax on
+
+" Filetype and indent {
 filetype plugin on
-
-let g:asyncomplete_auto_completeopt = 1
-
-autocmd FileType c,cpp
-    \ setlocal
-    \ softtabstop=4
-    \ shiftwidth=4
-    \ tabstop=4
-
-colorscheme molokai
-syntax enable
-
-set encoding=utf-8
-set softtabstop=4
 set shiftwidth=4
 set tabstop=4
-set mouse=a
-
-set relativenumber
-set noerrorbells
-set smartindent
-set cursorline
-set lazyredraw
-set noswapfile
-set autoindent
-set showmatch
+set softtabstop=4
 set expandtab
-set smartcase
-set nobackup
-set hlsearch
-set number
-set nowrap
+set smartindent
+" }
 
-nnoremap <C-p> :Files<CR>
+" General settings {
+set encoding=utf-8
+set mouse=a
+set relativenumber
+set number
+set hlsearch
+set smartcase
+set showmatch
+set backspace=indent,eol,start
+set noerrorbells
+set noshowmode
+set noswapfile
+set nobackup
+set completeopt=menuone,noinsert,noselect
+" }
+
+" KeyMapping {
+let mapleader=','
+let g:mapleader=','
+
+nnoremap <leader>w :W<CR>
+nnoremap <leader>p :Files<CR>
 
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
@@ -63,4 +62,32 @@ vnoremap <Tab> >gv
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <expr> <TAB> pumvisible() ? asyncomplete#close_popup() : "\<TAB>"
+" }
 
+" NerdCommenter settings {
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/'  }  }
+let g:NERDCommentEmptyLines = 1
+" }
+
+" AirLine settings {
+" let g:airline_section_a = ''
+" let g:airline_section_b = ''
+" let g:airline_section_c = ''
+" let g:airline_section_x = ''
+" let g:airline_section_y = ''
+let g:airline_section_z = '%l:%c'
+" }
+
+" Lsp settings {
+autocmd FileType c,cpp let g:asyncomplete_enable = 1
+let g:lsp_settings = {
+    \ 'clangd': {
+    \ 'cmd': ['clangd', '--background-index', '--completion-style=detailed', '--header-insertion=never'],
+    \ 'filetypes': ['c', 'cpp'],
+    \ }
+    \ }
+" }
