@@ -1,11 +1,5 @@
 #! /usr/bin/env bash
 
-if [[ "$(uname)" == "Darwin" || "$(uname)" == "darwin" ]]; then
-    CPY="pbcopy"
-elif [[ "$(uname)" == "Linux" || "$(uname)" == "linux" ]]; then
-    CPY="xclip -selection clipboard"
-fi
-
 git log                                                                        \
     --graph                                                                    \
     --color=always                                                             \
@@ -27,5 +21,10 @@ fzf                                                                            \
             && sh -c "git show --color $hash                                   |
             less -R")'                                                         \
     --bind='ctrl-c:execute(hash=$(echo {}                                      |
-            grep -o "[a-f0-9]\{7\}")                                           \
-            && echo -n $hash | $CPY)'
+            grep -o "[a-f0-9]\{7\}"                                            |
+            xargs echo -n) &&                                                  \
+            if [[ $(uname) == 'Darwin' || $(uname) == 'darwin' ]]; then        \
+                echo -n $hash | pbcopy;                                        \
+            elif [[ $(uname) == 'Linux' || $(uname) == 'linux' ]]; then        \
+                echo -n $hash | xclip -selection clipboard;                    \
+            fi)'
