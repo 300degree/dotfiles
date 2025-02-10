@@ -7,10 +7,9 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
@@ -83,11 +82,28 @@ let g:airline_section_z = '%l:%c'
 " }
 
 " Lsp settings {
-autocmd FileType c,cpp let g:asyncomplete_enable = 1
-let g:lsp_settings = {
-    \ 'clangd': {
-    \ 'cmd': ['clangd', '--background-index', '--completion-style=detailed', '--header-insertion=never'],
-    \ 'filetypes': ['c', 'cpp'],
-    \ }
-    \ }
+" if executable('clangd')
+"     au User lsp_setup call lsp#register_server({
+"     \ 'name': 'clangd',
+"     \ 'cmd': {server_info->['clangd']},
+"     \ 'allowlist': ['c', 'cpp']
+"     \ })
+" endif
+" 
+" if executable('pyls')
+"     " pip install python-language-server
+"     au User lsp_setup call lsp#register_server({
+"     \ 'name': 'pyls',
+"     \ 'cmd': {server_info->['pyls']},
+"     \ 'allowlist': ['python'],
+"     \ })
+" endif
+" 
+" autocmd FileType c,cpp let g:asyncomplete_enable = 1
+" let g:lsp_settings = {
+"     \ 'clangd': {
+"         \ 'cmd': ['clangd', '--background-index', '--completion-style=detailed', '--header-insertion=never'],
+"         \ 'filetypes': ['c', 'cpp'],
+"     \ }
+" \ }
 " }
