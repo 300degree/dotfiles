@@ -3,25 +3,19 @@
 git log                                                                        \
     --graph                                                                    \
     --color=always                                                             \
-    --format='%C(white)%h %C(blue)%s%C(red)%d'                                 |
+    --format='%C(white)%h %C(blue)%s%C(red)%d' |
 fzf                                                                            \
     --reverse                                                                  \
     --no-multi                                                                 \
     --no-sort                                                                  \
     --ansi                                                                     \
-    --preview='echo {}                                                         |
-               grep -o "[a-f0-9]\{5\}"                                         |
-               head -1                                                         |
+    --preview='echo {} | grep -o "[a-f0-9]\{5\}" | head -1 |
                xargs -I % sh -c "git show --color=always %"'                   \
     --header='<Enter>: view, <C-c>: copy hash'                                 \
-    --bind='enter:execute(hash=$(echo {}                                       |
-            grep -o "[a-f0-9]\{7\}"                                            |
-            sed -n "1p")                                                       \
-            && [[ $hash != "" ]]                                               \
-            && sh -c "git show --color $hash                                   |
-            less -R")'                                                         \
-    --bind='ctrl-c:execute(hash=$(echo {}                                      |
-            grep -o "[a-f0-9]\{7\}"                                            |
+    --bind='enter:execute(hash=$(echo {} | grep -o "[a-f0-9]\{7\}" |
+            sed -n "1p") && [[ $hash != "" ]]                                  \
+            && sh -c "git show --color $hash | less -R")'                      \
+    --bind='ctrl-c:execute(hash=$(echo {} | grep -o "[a-f0-9]\{7\}" |
             xargs echo -n) &&                                                  \
             if [[ $(uname) == 'Darwin' || $(uname) == 'darwin' ]]; then        \
                 echo -n $hash | pbcopy;                                        \
