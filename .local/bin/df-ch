@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+git branch                                                                     \
+    --all                                                                      \
+    --sort=-committerdate                                                      \
+    --color=always |
+fzf                                                                            \
+    --reverse                                                                  \
+    --no-multi                                                                 \
+    --no-sort                                                                  \
+    --ansi                                                                     \
+    --header='<Enter>: to checkout the branch, <C-d>: to delete the branch'    \
+    --preview-label '[ Commits ]'                                              \
+    --preview='git log $(echo {} | sed "s/^[* ]*//" | awk "{print \$1}")       \
+               --graph                                                         \
+               --color                                                         \
+               --format="%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d"'    \
+    --bind='enter:execute(git checkout $(echo {} | sed "s/^[* ]*//"))'         \
+    --bind='enter:+reload(git branch --all --color=always)'                    \
+    --bind='ctrl-d:execute(git branch -d $(echo {} | sed "s/^[* ]*//"))'       \
+    --bind='ctrl-d:+reload(git branch --all --color=always)'
