@@ -15,8 +15,7 @@ URL="https://raw.githubusercontent.com/300degree/dotfiles/main"
 [ ! -f ~/.tmux.conf ] && curl -sfL "$URL/.config/tmux/tmux.conf" -o ~/.tmux.conf
 
 # printf "Install .zshrc\n"
-[ ! -f ~/.zshrc ] &&
-curl -sfL "$URL/.config/zsh/zshrc" -o ~/.zshrc
+[ ! -f ~/.zshrc ] && curl -sfL "$URL/.config/zsh/zshrc" -o ~/.zshrc
 
 # printf "Install .gitconfig\n"
 [ ! -f ~/.gitconfig ] && curl -sfL "$URL/.config/git/config" -o ~/.gitconfig
@@ -27,7 +26,7 @@ curl -sfL "$URL/.clang-format" -o ~/.clang-format
 
 # dotfile log and etc [TODO]
 mkdir -p ~/.local/bin
-[ ! -f ~/.local/bin/df-log ] && curl -sfL "$URL/.local/bin/df-log" -o ~/.local/bin/df-log
-# [ ! -f ~/.local/bin/df- ] && curl -sfL "$URL/.local/bin/df-" -o ~/.local/bin/df-
+[ ! -f ~/.local/bin/df-log ] && curl -sfL "$URL/bin/df-log" -o ~/.local/bin/df-log
+[ ! -f ~/.local/bin/df- ] && curl -sfL "$URL/bin/df-co" -o ~/.local/bin/df-co
 
 printf "Done! : Dont forget to run :PlugInstall in VIM and change default SHELL\n"

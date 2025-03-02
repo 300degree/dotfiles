@@ -21,3 +21,7 @@
     re    = reset
     last  = log -1 HEAD
     recap = log -5 HEAD
+[gpg]
+    format = ssh
+[commin]
+    gpgSign = true
