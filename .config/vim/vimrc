@@ -49,11 +49,16 @@ set completeopt=menuone,noinsert,noselect
 " }
 
 " KeyMapping {
+" command! Format LspDocumentFormat
+" command! FormatSync LspDocumentFormatSync
+
 let mapleader=','
 let g:mapleader=','
 
 nnoremap <leader>w :W<CR>
 nnoremap <leader>p :Files<CR>
+" nnoremap <leader>fm :Format<CR>
+" nnoremap <leader>fms :FormatSync<CR>
 
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv

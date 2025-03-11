@@ -8,6 +8,9 @@ URL="https://raw.githubusercontent.com/300degree/dotfiles/main"
 [ ! -f ~/.vim/autoload/plug.vim ] && curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+wget -O .oh-my-zsh/themes/gruvbox.zsh-theme \
+    https://raw.githubusercontent.com/sbugzu/gruvbox-zsh/refs/heads/master/gruvbox.zsh-theme
+
 # printf "Install vimrc\n"
 [ ! -f ~/.vimrc ] && curl -sfL "$URL/.config/vim/vimrc" -o ~/.vimrc
 
@@ -21,12 +24,10 @@ URL="https://raw.githubusercontent.com/300degree/dotfiles/main"
 [ ! -f ~/.gitconfig ] && curl -sfL "$URL/.config/git/config" -o ~/.gitconfig
 [ ! -f ~/.gitignore ] && curl -sfL "$URL/.config/git/ignore" -o ~/.gitignore
 
-# printf "Install .clang-format"
-curl -sfL "$URL/.clang-format" -o ~/.clang-format
-
 # dotfile log and etc [TODO]
 mkdir -p ~/.local/bin
 [ ! -f ~/.local/bin/df-log ] && curl -sfL "$URL/bin/df-log" -o ~/.local/bin/df-log
-[ ! -f ~/.local/bin/df- ] && curl -sfL "$URL/bin/df-co" -o ~/.local/bin/df-co
+[ ! -f ~/.local/bin/df-co ] && curl -sfL "$URL/bin/df-co" -o ~/.local/bin/df-co
+chmod +x ~/.local/bin/*
 
 printf "Done! : Dont forget to run :PlugInstall in VIM and change default SHELL\n"

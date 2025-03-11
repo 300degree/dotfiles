@@ -17,6 +17,6 @@
 ### 🚀 Installation
 
 ```bash
-sh -c "$(curl -sSL https://raw.githubusercontent.com/300degree/dotfiles/main/setup.sh)"
+sh -c "$(curl -sSL https://raw.githubusercontent.com/300degree/dotfiles/master/setup.sh)"
 
 ```
