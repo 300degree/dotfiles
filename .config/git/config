@@ -5,7 +5,6 @@
     defaultBranch = master
 [core]
     editor       = vim
-	excludesFile = /home/kit/.config/git/ignore
 [diff]
 	tool = vimdiff
 [difftool]
