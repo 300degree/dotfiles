@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+path=${1:-.}
+
+select_file() {
+  echo $(find "$path" -type f ! -path '*/\.*' 2>/dev/null |
+         fzf --ansi                                                            \
+             --reverse                                                         \
+             --prompt="[$1]> "                                                 \
+             --preview="cat {}"                                                \
+             --preview-window=wrap                                             \
+             --bind="ctrl-u:preview-page-up"                                   \
+             --bind="ctrl-d:preview-page-down"                                 \
+             --bind="ctrl-k:preview-up"                                        \
+             --bind="ctrl-j:preview-down" | tr -s ' ' | cut -d ' ' -f 1)
+}
+
+base=$(select_file "Base Files")
+compare=$(select_file "Compare Files")
+
+if [[ -n "$base" && -n "$compare" ]]; then
+  vimdiff "$base" "$compare"
+else
+  vim "$base"
+fi
