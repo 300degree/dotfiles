@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+while out=$(git branch -v "$@" |
+            fzf --ansi                                                         \
+                --no-sort                                                      \
+                --reverse                                                      \
+                --prompt="[Branch]> "                                          \
+                --expect=enter,del,ctrl-e)
+do
+  expect=$(echo $out | tr -s ' ' | cut -d ' ' -f 1)
+  branch=$(echo $out | tr -s ' ' | cut -d ' ' -f 2)
+
+  case $expect in
+    enter)
+      git checkout "$branch"
+      break
+      ;;
+    ctrl-e)
+      git commit-explore "$branch" "Commit"
+      break
+      ;;
+    del)
+      git branch -D "$branch"
+      ret=$?
+      if [ $ret -ne 0 ]; then
+        exit $ret
+      fi
+      ;;
+  esac
+done
