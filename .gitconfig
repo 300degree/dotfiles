@@ -1,6 +1,6 @@
 [user]
-    email = kitibodee05p@gmail.com
-	name  = 300degree
+    email = 
+	name  = 
 [init]
     defaultBranch = master
 [core]
@@ -20,7 +20,5 @@
     re    = reset
     last  = log -1 HEAD
     recap = log -5 HEAD
-[gpg]
-    format = ssh
 [commin]
     gpgSign = true
