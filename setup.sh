@@ -11,18 +11,19 @@ mkdir -p $BIN_PREFIX
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"  \
   "" --unattended
 
-[ ! -f ~/.vim/autoload/plug.vim ] && wget -O ~/.vim/autoload/plug.vim          \
+[ ! -f ~/.vim/autoload/plug.vim ] && wget -O ~/.vim/autoload/plug.vim -q       \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-[ ! -f ~/.vimrc ] && wget -O ~/.vimrc "$URL/.vimrc" 
-[ ! -f ~/.gitconfig ] && wget -O ~/.gitconfig "$URL/.gitconfig"
-[ ! -f ~/.tmux.conf ] && wget -O ~/.tmux.conf "$URL/.tmux.conf"
-[ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bck && wget -O ~/.zshrc "$URL/.zshrc" 
+[ ! -f ~/.vimrc ] && wget -O ~/.vimrc -q "$URL/.vimrc" 
+[ ! -f ~/.gitconfig ] && wget -O ~/.gitconfig -q "$URL/.gitconfig"
+[ ! -f ~/.tmux.conf ] && wget -O ~/.tmux.conf -q "$URL/.tmux.conf"
+[ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bck && \
+  wget -O ~/.zshrc -q "$URL/.zshrc" 
 
 fzf_script=("git-commit-explore" "git-branch-explore" "vim-explore")
 for out in "${fzf_script[@]}"
 do
-  wget -O $BIN_PREFIX/$out "$URL/bin/$out"
+  wget -O $BIN_PREFIX/$out -q "$URL/bin/$out"
   if [ -f $BIN_PREFIX/$out ]; then
     chmod +x ~/.local/bin/$out
   fi
