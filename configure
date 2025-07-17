@@ -1,0 +1,48 @@
+#! /usr/bin/env bash
+set -e
+
+echo "Installing oh-my-zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Installing vim-plug..."
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-mh-zsh/custom}
+echo "Installing oh-my-zsh plugins..."
+git clone https://github.com/jeffreytse/zsh-vi-mode \
+  $ZSH_CUSTOM/plugins/zsh-vi-mode
+
+echo "Copying vimrc..."
+cp .vimrc ~/.vimrc
+
+echo "Installing vim plugins with PlugInstall..."
+vim +PlugInstall +qall
+
+echo "Copying zshrc..."
+cp .zshrc ~/.zshrc
+
+echo "Copying zshenv..."
+cp .zshenv ~/.zshenv
+
+echo "Copying tmux.conf..."
+cp .tmux.conf ~/.tmux.conf
+
+echo "Copying gdbinit..."
+cp .gdbinit ~/.gdbinit
+
+echo "Copying gitconfig..."
+cp .gitconfig ~/.gitconfig
+
+echo "Changing default shell..."
+if chsh -s "$(command -v zsh)"; then
+    echo "Successfully set your default shell to zsh..."
+else
+    echo "Default shell not set successfully..." >&2
+fi
+
+mkdir -p ~/.local/bin
+mkdir -p ~/.opt/bin
+cp bin/* ~/.local/bin
+
+echo "Done!! Take a break. Drink coffee."
