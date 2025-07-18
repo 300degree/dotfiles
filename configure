@@ -8,7 +8,7 @@ echo "Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-mh-zsh/custom}
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 echo "Installing oh-my-zsh plugins..."
 git clone https://github.com/jeffreytse/zsh-vi-mode \
   $ZSH_CUSTOM/plugins/zsh-vi-mode
@@ -33,13 +33,6 @@ cp .gdbinit ~/.gdbinit
 
 echo "Copying gitconfig..."
 cp .gitconfig ~/.gitconfig
-
-echo "Changing default shell..."
-if chsh -s "$(command -v zsh)"; then
-    echo "Successfully set your default shell to zsh..."
-else
-    echo "Default shell not set successfully..." >&2
-fi
 
 mkdir -p ~/.local/bin
 mkdir -p ~/.opt/bin

@@ -29,8 +29,8 @@ function start_agent
     chmod 600 "${SSH_ENV}"
     source "${SSH_ENV}" > /dev/null
 
-    if [ -f $HOME/.ssh/my_agent ]; then
-        /usr/bin/ssh-add $HOME/.ssh/my_agent
+    if [ -f $HOME/.ssh/agent ]; then
+        /usr/bin/ssh-add $HOME/.ssh/agent
     else
         echo "Warning: SSH key ${HOME}/.ssh/agent not found."
     fi
