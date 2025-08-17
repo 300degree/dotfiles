@@ -1,6 +1,6 @@
 call plug#begin("~/.vim/plugged")
 
-Plug 'junegunn/fzf', { 'dir': '~/.local/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.opt/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'morhetz/gruvbox'

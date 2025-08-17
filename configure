@@ -8,11 +8,6 @@ echo "Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
-echo "Installing oh-my-zsh plugins..."
-git clone https://github.com/jeffreytse/zsh-vi-mode \
-  $ZSH_CUSTOM/plugins/zsh-vi-mode
-
 echo "Copying vimrc..."
 cp .vimrc ~/.vimrc
 
@@ -34,8 +29,9 @@ cp .gdbinit ~/.gdbinit
 echo "Copying gitconfig..."
 cp .gitconfig ~/.gitconfig
 
-mkdir -p ~/.local/bin
 mkdir -p ~/.opt/bin
-cp bin/* ~/.local/bin
+cp bin/* ~/.opt/bin
+
+test -d ~/.opt/ctags || tar -xzf 3rd-party/uctags-2025.07.31-linux-x86_64.release.tar.gz -C ~/.opt/ctags
 
 echo "Done!! Take a break. Drink coffee."

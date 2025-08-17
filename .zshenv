@@ -8,26 +8,11 @@ if command -v vim >/dev/null 2>&1; then
     export EDITOR=vim
 fi
 
-# Set the list of directories that Zsh searches for programs.
-path=(
-    /usr/local/{bin,sbin}
-    /usr/{bin,sbin}
-    /{bin,sbin}
-    $HOME/.local/{bin,sbin}
-    $HOME/local/{bin,sbin}
-    $HOME/.opt/{bin,sbin}
-    $HOME/opt/{bin,sbin}
-    $HOME/{bin,sbin}
-    $path
-)
+export MANPATH=$HOME/.opt/uctags:$MANPATH
+export PATH=$HOME/.opt/uctags:$PATH
 
-# Set the list of directories that Zsh searches for libraries.
-ld_lib_path=(
-    $HOME/.local/{lib,lib64}
-    $HOME/local/{lib,lib64}
-    $HOME/.opt/{lib,lib64}
-    $HOME/opt/{lib,lib64}
-    ${(s/:/)LD_LIBRARY_PATH}
-)
+export C_INCLUDE_PATH=$HOME/.opt/include:$C_INCLUDE_PATH
+export LD_LIBRARY_PATH=$HOME/.opt/lib:$LD_LIBRARY_PATH
+test -d $HOME/.opt/mpi/man || export MANPATH=$HOME/.opt/mpi/man:$MANPATH
+export PATH=$HOME/.opt/mpi/bin:$PATH
 
-export LD_LIBRARY_PATH="${(j/:/)ld_lib_path}"

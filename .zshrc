@@ -2,18 +2,11 @@
 ZSH_THEME="agnoster"
 SSH_ENV="$HOME/.ssh/environment"
 
-plugins=(git zsh-vi-mode)
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # User configuration
-
-# Make sure the custom escape key 'jk'
-ZVM_VI_ESCAPE_BINDKEY=jk
-ZVM_VI_INSERT_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-ZVM_VI_VISUAL_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-ZVM_VI_OPPEND_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-
 alias vi="vim"
 alias cls="clear"
 alias py="python3"
