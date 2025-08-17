@@ -32,6 +32,8 @@ cp .gitconfig ~/.gitconfig
 mkdir -p ~/.opt/bin
 cp bin/* ~/.opt/bin
 
-test -d ~/.opt/ctags || tar -xzf 3rd-party/uctags-2025.07.31-linux-x86_64.release.tar.gz -C ~/.opt/ctags
+mkdir -p ~/.opt/ctags
+tar -xzf 3rd-party/uctags-2025.07.31-linux-x86_64.release.tar.gz -C ~/.opt/ctags \
+    --strip-components=1
 
 echo "Done!! Take a break. Drink coffee."
