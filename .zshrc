@@ -23,6 +23,7 @@ alias py="python3"
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
 alias la="ls -al --color=auto"
+alias reload="source $HOME/.zshrc"
 
 function start_agent
 {
