@@ -50,6 +50,7 @@ let g:mapleader=','
 
 nnoremap <leader>w :W<CR>
 nnoremap <leader>p :Files<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 " nnoremap <leader>fm :Format<CR>
 " nnoremap <leader>fms :FormatSync<CR>
 
