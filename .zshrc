@@ -44,7 +44,9 @@ function start_agent
 function vf
 {
     local file
-    file=(${(f)"$(find . -iname "*$1*" -print0 | fzf --read0 -0 -1 -m)"})
+    file=(${(f)"$(find . \( -path './.git' -o -path './.cache' \)              \
+        -prune -o -iname "*$1*" -print0 |
+        fzf --read0 -0 -1 -m)"})
     [[ -n $file ]] && vim -- $file
 }
 
