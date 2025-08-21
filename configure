@@ -17,9 +17,6 @@ vim +PlugInstall +qall
 echo "Copying zshrc..."
 cp .zshrc ~/.zshrc
 
-echo "Copying zshenv..."
-cp .zshenv ~/.zshenv
-
 echo "Copying tmux.conf..."
 cp .tmux.conf ~/.tmux.conf
 

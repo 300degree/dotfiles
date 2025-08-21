@@ -1,4 +1,7 @@
 # Path to your oh-my-zsh installation.
+export HOME=~
+export ZSH="$HOME/.oh-my-zsh"
+export EDITOR=vim
 ZSH_THEME="agnoster"
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -7,6 +10,13 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # User configuration
+export PATH=$HOME/.opt/ctags/bin:$PATH
+export MANPATH=$HOME/.opt/ctags/man:$MANPATH
+
+export MPI_DIR=$HOME/.opt/mpi
+export LD_LIBRARY_PATH=$MPI_DIR/bin:$HOME/.opt/mpi/lib:$LD_LIBRARY_PATH
+export PATH=$MPI_DIR/lib:$HOME/.opt/mpi/bin:$PATH
+
 alias vi="vim"
 alias cls="clear"
 alias py="python3"
@@ -62,4 +72,3 @@ function t
         | sed -e "s/[^-][^\/]*\// |/g" \
         -e "s/|\([^ ]\)/|-\1/"
 }
-
