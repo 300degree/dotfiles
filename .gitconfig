@@ -1,0 +1,30 @@
+[user]
+    email       =
+    name        =
+	signingkey  =
+[init]
+    defaultBranch   = master
+[core]
+    editor  = vim
+[diff]
+	tool    = vimdiff
+[difftool]
+    tool    = vimdiff
+    prompt  = false
+[rebase]
+    tool = vimdiff
+[alias]
+    df  = difftool
+    cm  = commit -m
+    ci  = commit
+    co  = checkout
+    st  = status
+    br  = branch
+    re  = reset
+    las = log --abbrev-commit -1 HEAD
+    re  = log --abbrev-commit -5 HEAD
+    l   = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white) - %an%C(reset)%C(auto)%d%C(reset)'
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
