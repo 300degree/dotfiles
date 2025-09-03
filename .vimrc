@@ -1,95 +1,87 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    au VimEnter * PlugInstall --sync
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    au VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin("~/.vim/plugged")
 
-Plug 'junegunn/fzf', { 'dir': '~/.opt/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {
+    \ 'dir': '~/.opt/fzf',
+    \ 'do': './install --all'
+    \ }
 Plug 'junegunn/fzf.vim'
 
-Plug 'morhetz/gruvbox'
+Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/vim-lsp'
-Plug 'preservim/tagbar'
+Plug 'kien/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/tagbar'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-set t_Co=256
-set termguicolors
-set background=dark
-colorscheme gruvbox
+" --- General ---
 syntax on
+set backspace=indent,eol,start
+set completeopt=menuone,noinsert,noselect
+set encoding=utf-8
+set hlsearch
+set laststatus=2
+set mouse=a
+set nobackup
+set noerrorbells
+set noshowmode
+set noswapfile
+set number
+set relativenumber
+set showmatch
+set smartcase
+set tags=./tags;/
 
-filetype plugin on
+" --- Indent ---
+filetype plugin indent on
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
 set smartindent
 
-set encoding=utf-8
-set mouse=a
-set relativenumber
-set number
-set hlsearch
-set smartcase
-set showmatch
-set backspace=indent,eol,start
-set noerrorbells
-set noshowmode
-set noswapfile
-set nobackup
-set completeopt=menuone,noinsert,noselect
+" --- Colorscheme ---
+if !has('gui_running')
+    set t_Co=256
+endif
 
-" command! Format LspDocumentFormat
-" command! FormatSync LspDocumentFormatSync
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
+" --- Cursorline ---
+set cursorline
+hi CursorLine cterm=NONE ctermbg=BLACK ctermfg=NONE
+
+" --- Keybind ---
 let mapleader=','
-let g:mapleader=','
-
-nnoremap <leader>w :W<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>t :TagbarToggle<CR>
-" nnoremap <leader>fm :Format<CR>
-" nnoremap <leader>fms :FormatSync<CR>
-
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
 
-" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-" inoremap <expr> <TAB> pumvisible() ? asyncomplete#close_popup() : "\<TAB>"
-
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDAltDelims_java = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/'  }  }
+let g:NERDSpaceDelims       = 1
+let g:NERDCompactSexyComs   = 1
+let g:NERDDefaultAlign      = 'left'
+let g:NERDAltDelims_java    = 1
+let g:NERDCustomDelimiters  = { 'c': { 'left': '/*','right': '/'  }  }
 let g:NERDCommentEmptyLines = 1
 
-set laststatus=2
 let g:lightline = {
-            \ 'colorscheme': 'powerline', 
-            \ }
-
- " if executable('clangd')
-     " au User lsp_setup call lsp#register_server({
-     " \ 'name': 'clangd',
-     " \ 'cmd': {server_info->['clangd']},
-     " \ 'allowlist': ['c', 'cpp', 'cuda']
-     " \ })
- " endif
- " autocmd FileType c,cpp let g:asyncomplete_enable = 1
- " let g:lsp_settings = {
-     " \ 'clangd': {
-         " \ 'cmd': ['clangd', '--background-index', '--completion-style=detailed', '--header-insertion=never'],
-         " \ 'filetypes': ['c', 'cpp', 'cuda'],
-     " \ }
- " \ }
+    \ 'colorscheme': 'powerline',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ }
+    \ } 
