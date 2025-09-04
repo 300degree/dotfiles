@@ -67,21 +67,37 @@ nnoremap <leader>p :Files<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
+"
+" --- Show Trim Whitespace ---
+highlight ExtraWhitespace ctermbg=RED guibg=RED
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call  clearmatches()
 
-let g:NERDSpaceDelims       = 1
-let g:NERDCompactSexyComs   = 1
-let g:NERDDefaultAlign      = 'left'
-let g:NERDAltDelims_java    = 1
-let g:NERDCustomDelimiters  = { 'c': { 'left': '/*','right': '/'  }  }
-let g:NERDCommentEmptyLines = 1
+let g:NERDSpaceDelims            = 1
+let g:NERDCompactSexyComs        = 1
+let g:NERDDefaultAlign           = 'left'
+let g:NERDAltDelims_java         = 1
+let g:NERDCustomDelimiters       = { 'c': { 'left': '/*','right': '/'  }  }
+let g:NERDCommentEmptyLines      = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+function! ShowFuncName()
+    return tagbar#currenttag('%s', '', 'f')
+endfunction
 
 let g:lightline = {
     \ 'colorscheme': 'powerline',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ ['lineinfo'], ['percent'],
+    \              ['tagbar', 'fileformat', 'fileencoding', 'filetype']]
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead'
+    \   'gitbranch': 'FugitiveHead',
+    \   'tagbar': 'ShowFuncName',
     \ }
-    \ } 
+    \ }

@@ -67,15 +67,43 @@ function fd
 # Print folder structure in a tree-like format
 function t
 {
-    if [[ "$1" == "--help" ]]; then
-        echo "Usage: t [path] [depth]"
-        echo "  path   Directory to display (default: .)"
-        echo "  depth  Max depth to traverse (default: 3)"
-        exit 0
-    fi
+    case "${1}" in
+        --help|-h|help|h)
+            echo "Usage: ${0} [PATH] [DEPTH]"
+            echo "  PATH   Directory to display  (default: current directories)"
+            echo "  DEPTH  Max depth to traverse (default: 2)"
+            return 1
+            ;;
+    esac
 
-    find "${1:-.}" -maxdepth "${2:-3}" \
-        -not -regex ".*\/((.idea|.git|.venv|node_modules|venv)\/.*|.DS_Store)" \
-        | sed -e "s/[^-][^\/]*\// |/g" \
-        -e "s/|\([^ ]\)/|-\1/"
+    # TODO: Add more directories.
+    find "${2:-.}" -maxdepth "${1:-2}"                                         \
+        \( -path './.git' -o -path './.cache' -o -path './build'               \
+           -o -path './.deps' -o -path './.libs'                               \
+           -o -path './CMakeFiles' -o -path './_deps'                          \
+        \) -prune -o -type f                                                   \
+        -not -regex ".*\.\(DS_Store\|swap\|swp\|tags\)"                        \
+        -print | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
+}
+
+# Search pattern ack-like
+function ack
+{
+    local GREEN="\033[0;32m"
+    local YELLOW="\033[1;33m"
+    local RESET="\033[0m"
+    local prev=""
+
+    # TODO: Add more directories.
+    find . "${2:-.}" \( -path './.git' -o -path './.cache' -o -path './build'  \
+                     \) -prune -o -type f                                      \
+        -exec grep "${1}" -nH {} + \
+        | awk -F: -v GREEN="${GREEN}" -v YELLOW="${YELLOW}" -v RESET="${RESET}"\
+        '{
+            if ($1 != prev) {
+                print "\n"GREEN$1RESET
+                prev = $1
+            }
+            print YELLOW$2RESET":"$3
+        }'
 }
